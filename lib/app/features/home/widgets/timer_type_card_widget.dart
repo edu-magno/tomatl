@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tomatl/shared/widgets/theme/tomatl_theme.dart';
 
 class TimeTypeCardWidget extends StatefulWidget {
   final String title;
@@ -25,13 +24,12 @@ class _TimeTypeCardWidgetState extends State<TimeTypeCardWidget> {
       child: Container(
         height: 70,
         margin: EdgeInsets.all(10.0),
-        width: MediaQuery.of(context).size.width * 0.30,
         child: Card(
           color: widget.isSelected ? Color(0xFFC73F3F) : Colors.white,
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(left: 10),
+                margin: EdgeInsets.only(left: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
