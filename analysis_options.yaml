@@ -1,0 +1,33 @@
+include: package:effective_dart/analysis_options.yaml
+analyzer:
+  errors:
+    # treat missing required parameters as a warning (not a hint)
+    missing_required_param: warning
+  exclude:
+    - '**.g.dart'
+    - '**.mocks.dart'
+    - 'lib/generated_plugin_registrant.dart'
+
+linter:
+  rules:
+    public_member_api_docs: false
+    constant_identifier_names: false
+    avoid_empty_else: true
+    avoid_relative_lib_imports: true
+    avoid_slow_async_io: true
+    avoid_types_as_parameter_names: true
+    cancel_subscriptions: true
+    lines_longer_than_80_chars: false
+    close_sinks: false
+    control_flow_in_finally: true
+    hash_and_equals: true
+    iterable_contains_unrelated_type: true
+    list_remove_unrelated_type: true
+    avoid_positional_boolean_parameters: false
+    avoid_equals_and_hash_code_on_mutable_classes: false
+    literal_only_boolean_expression: true
+    no_adjacent_strings_in_list: true
+    unawaited_futures: false
+    unnecessary_statements: true
+    unrelated_type_equality_checks: true
+    valid_regexps: true
