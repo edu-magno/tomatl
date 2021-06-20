@@ -11,12 +11,20 @@ class TimeTypeCardsComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final tomatlTimer = BlocProvider.of<SelectedTimerTypeCubit>(
       context,
-    ).state;
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: _buildTimeTypeCards(context, tomatlTimer),
-      ),
+    );
+    return BlocBuilder<SelectedTimerTypeCubit, TomatlTimer>(
+      bloc: tomatlTimer,
+      builder: (context, state) {
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: _buildTimeTypeCards(
+              context,
+              tomatlTimer.state,
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -26,7 +34,8 @@ class TimeTypeCardsComponent extends StatelessWidget {
           .map(
             (timer) => TimeTypeCardWidget(
               title: timer.title,
-              description: timer.description,
+              interval: timer.interval,
+              time: timer.time,
               isSelected: timer.id == tomatlTimer.id ? true : false,
               onTap: () => BlocProvider.of<SelectedTimerTypeCubit>(context)
                   .setTimer(timer),

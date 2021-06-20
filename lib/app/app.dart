@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../shared/widgets/theme/tomatl_theme.dart';
+import 'package:tomatl/shared/theme/tomatl_theme.dart';
 
 import 'features/home/cubits/selected_timer_type.dart';
 import 'features/home/pages/home_page.dart';
@@ -12,13 +11,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => SelectedTimerTypeCubit(TomatlTimer(
-        id: 0,
-        description: '',
-        interval: 0,
-        time: 1,
-        title: '',
-      )),
+      create: (_) => SelectedTimerTypeCubit(
+        TomatlTimer(
+          id: 0,
+          interval: 0,
+          time: 1,
+          title: '',
+        ),
+      ),
       child: MaterialApp(
         // Criar um themeData para usar as cores
         theme: tomatlDefaultTheme,

@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:tomatl/shared/theme/tomatl_colors.dart';
+import 'package:tomatl/shared/widgets/default_container_widget.dart';
+import 'package:tomatl/shared/widgets/vertical_spacing_10.dart';
 
 class TimeTypeCardWidget extends StatefulWidget {
   final String title;
-  final String description;
+  final int time;
+  final int interval;
   final void Function()? onTap;
   final bool isSelected;
 
-  TimeTypeCardWidget(
-      {required this.title,
-      required this.description,
-      this.onTap,
-      required this.isSelected});
+  TimeTypeCardWidget({
+    required this.title,
+    required this.interval,
+    required this.time,
+    required this.isSelected,
+    this.onTap,
+  });
 
   @override
   _TimeTypeCardWidgetState createState() => _TimeTypeCardWidgetState();
@@ -22,67 +28,51 @@ class _TimeTypeCardWidgetState extends State<TimeTypeCardWidget> {
     return GestureDetector(
       onTap: widget.onTap,
       child: Container(
-        height: 70,
         margin: EdgeInsets.all(10.0),
         child: Card(
-          color: widget.isSelected ? Color(0xFFC73F3F) : Colors.white,
+          color: widget.isSelected ? TomatlColors.secondary : Colors.white,
           child: Column(
             children: [
-              Container(
-                margin: EdgeInsets.only(left: 5),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    IconButton(
-                      iconSize: 20.0,
-                      icon: Icon(Icons.help_outline),
-                      onPressed: () => showDialog(
-                        context: context,
-                        builder: (context) => Dialog(),
-                      ),
-                    ),
-                  ],
-                ),
-              )
+              VerticalSpacing10(),
+              _buildTitle(),
+              VerticalSpacing10(),
+              _buildTimeInfo(),
+              VerticalSpacing10(),
             ],
           ),
-          // child: Column(
-          //   crossAxisAlignment: CrossAxisAlignment.start,
-          //   children: [
-          //     Padding(
-          //       padding:
-          //           const EdgeInsets.only(left: 16.0, bottom: 10.0, top: 10.0),
-          //       child: Text(
-          //         widget.title,
-          //         textAlign: TextAlign.left,
-          //         style: TextStyle(
-          //           fontWeight: FontWeight.bold,
-          //           fontSize: 18.0,
-          //           color: widget.isSelected ? Colors.white : Color(0xFF363636),
-          //         ),
-          //       ),
-          //     ),
-          //     Padding(
-          //       padding: const EdgeInsets.only(
-          //           left: 16.0, bottom: 15.0, right: 15.0),
-          //       child: Text(
-          //         widget.description,
-          //         textAlign: TextAlign.left,
-          //         style: widget.isSelected
-          //             ? tomatlDefaultTextTheme.bodyText2
-          //             : tomatlDefaultTextTheme.bodyText1,
-          //       ),
-          //     ),
-          //   ],
-          // ),
         ),
       ),
     );
   }
+
+  Widget _buildTimeInfo() => DefaultContainer(
+        child: Text(
+          '${widget.time}/${widget.interval}min',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: widget.isSelected
+                ? TomatlColors.primary.shade50
+                : TomatlColors.primary,
+          ),
+        ),
+      );
+
+  Widget _buildTitle() => DefaultContainer(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              widget.title,
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: widget.isSelected
+                    ? TomatlColors.primary.shade50
+                    : TomatlColors.primary,
+              ),
+            ),
+          ],
+        ),
+      );
 }

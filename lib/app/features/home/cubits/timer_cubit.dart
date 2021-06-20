@@ -23,6 +23,7 @@ class TimerCubit extends Cubit<Time> {
       }
 
       if (state.seconds == 0) {
+   
         emit(Time(
           rawTime: state.rawTime--,
           seconds: 60,
