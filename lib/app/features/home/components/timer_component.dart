@@ -1,14 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
-import 'package:tomatl/app/models/timer_type_model.dart';
-import 'package:tomatl/shared/utils/time_formatter.dart';
-import 'package:tomatl/shared/widgets/icon_button_widget.dart';
-import '../../../../shared/theme/tomatl_colors.dart';
-import '../../../../shared/widgets/container_30_widget.dart';
 
+import '../../../../shared/utils/time_formatter.dart';
+import '../../../../shared/widgets/icon_button_widget.dart';
 import '../../../models/time_type.dart';
+import '../../../models/timer_type_model.dart';
 import '../cubits/selected_timer_type.dart';
 import '../cubits/timer_cubit.dart';
 
