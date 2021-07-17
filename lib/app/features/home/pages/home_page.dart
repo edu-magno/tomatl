@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tomatl/shared/theme/tomatl_colors.dart';
-import 'package:tomatl/shared/theme/tomatl_theme.dart';
-import 'package:tomatl/shared/widgets/vertical_spacing_20.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../components/time_type_cards_component.dart';
+import '../../../../shared/theme/tomatl_colors.dart';
+import '../../../../shared/theme/tomatl_theme.dart';
+import '../../../../shared/widgets/vertical_spacing_20.dart';
+import '../components/select_focus_card_list_component.dart';
 import '../components/timer_component.dart';
+import '../home_providers.dart';
+import '../widgets/pause_button_widget.dart';
+import '../widgets/play_button_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -35,9 +39,27 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             VerticalSpacing20(),
-            TimeTypeCardsComponent(),
+            SelectFocusCardListComponent(),
             Spacer(),
             TimerComponent(),
+            Row(
+              children: [
+                PlayButtonWidget(
+                  onTap: () {
+                    context
+                        .read(focusStateNotifierProvider.notifier)
+                        .startFocus();
+                  },
+                ),
+                PauseButtonWidget(
+                  onTap: () {
+                    context
+                        .read(focusStateNotifierProvider.notifier)
+                        .pauseFocus();
+                  },
+                )
+              ],
+            ),
             Spacer(),
           ],
         ),

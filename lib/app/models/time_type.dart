@@ -1,13 +1,12 @@
 class Time {
- 
-  int minutes;
+  int focus;
   int seconds;
-  int rawTime;
-
+  int interval;
+  bool isInterval;
   Time({
-    required this.rawTime,
-  
+    required this.isInterval,
     required this.seconds,
-    required this.minutes,
+    required this.focus,
+    required this.interval,
   });
 }
