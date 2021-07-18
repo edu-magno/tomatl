@@ -4,12 +4,17 @@ part 'common_state.freezed.dart';
 
 /// HOW TO USE
 ///
-/// typedef ExampleState = CommonState<ExampleFailed, ExampleSuccessful>;
+/// typedef ExampleState = CommonState<ExampleFailed, ExampleSuccessful, bool >;
+///
+///`bool` the booleanOptions is a second argument from success
+/// when you need check something
 ///
 @freezed
-abstract class CommonState<F, S> with _$CommonState<F, S> {
+abstract class CommonState<Failed, Success>
+    with _$CommonState<Failed, Success> {
   const factory CommonState.initial() = CommonStateInitial;
   const factory CommonState.loading() = CommonStateLoading;
-  const factory CommonState.failed(F f) = CommonStateFailed;
-  const factory CommonState.successful(S s) = CommonStateSuccessful;
+  const factory CommonState.failed(Failed fail) = CommonStateFailed;
+  const factory CommonState.successful(Success success, bool booleanOption) =
+      CommonStateSuccessful;
 }

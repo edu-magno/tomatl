@@ -35,6 +35,7 @@ dependencies:
   freezed: ^0.14.2
   flutter_riverpod: ^0.14.0+3
   intl: ^0.17.0
+  google_fonts: ^2.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -73,15 +74,6 @@ flutter:
       fonts:
         - asset: fonts/ArchitectsDaughter-Regular.ttf
 
-    - family: RedHatDisplay
-      fonts:
-        - asset: fonts/RedHatDisplay-Black.ttf
-        - asset: fonts/RedHatDisplay-BlackItalic.ttf
-        - asset: fonts/RedHatDisplay-Bold.ttf
-        - asset: fonts/RedHatDisplay-BoldItalic.ttf
-        - asset: fonts/RedHatDisplay-Italic.ttf
-        - asset: fonts/RedHatDisplay-Medium.ttf
-        - asset: fonts/RedHatDisplay-MediumItalic.ttf
-        - asset: fonts/RedHatDisplay-Regular.ttf        
+  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

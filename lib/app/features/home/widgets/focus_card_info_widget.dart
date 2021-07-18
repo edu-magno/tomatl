@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../../shared/theme/tomatl_colors.dart';
+import '../../../../shared/theme/tomatl_typography.dart';
 import '../../../../shared/widgets/default_container_widget.dart';
 
 class FocusCardInfoWidget extends StatelessWidget {
@@ -18,9 +20,7 @@ class FocusCardInfoWidget extends StatelessWidget {
     return DefaultContainer(
       child: Text(
         '$focus/$interval min',
-        style: TextStyle(
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
+        style: tomatlTypography.headline6?.copyWith(
           color:
               isSelected ? TomatlColors.primary.shade50 : TomatlColors.primary,
         ),

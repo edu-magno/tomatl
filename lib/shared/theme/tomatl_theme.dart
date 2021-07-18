@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'tomatl_colors.dart';
 
 final ThemeData tomatlDefaultTheme = ThemeData(
-    fontFamily: 'RedHatDisplay',
     backgroundColor: TomatlColors.primary.shade50,
     hintColor: TomatlColors.primary.shade800,
     appBarTheme: AppBarTheme(
@@ -34,16 +33,9 @@ final ThemeData tomatlDefaultTheme = ThemeData(
       minWidth: double.maxFinite,
     ));
 
-final TextTheme tomatlDefaultTextTheme = TextTheme(
-  bodyText1: TextStyle(color: TomatlColors.primary.shade800, fontSize: 14),
-  bodyText2: TextStyle(
-    color: TomatlColors.primary.shade50,
-    fontSize: 14,
-  ),
-  headline4: TextStyle(
-    fontFamily: 'ArchitectsDaughter',
-    color: TomatlColors.primary.shade50,
-    fontWeight: FontWeight.normal,
-    fontSize: 48,
-  ),
+final tomatlLogoTextStyle = TextStyle(
+  fontFamily: 'ArchitectsDaughter',
+  color: TomatlColors.primary.shade50,
+  fontWeight: FontWeight.normal,
+  fontSize: 48,
 );

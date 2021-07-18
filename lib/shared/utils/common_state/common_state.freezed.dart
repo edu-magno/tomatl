@@ -16,23 +16,25 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CommonStateTearOff {
   const _$CommonStateTearOff();
 
-  CommonStateInitial<F, S> initial<F, S>() {
-    return CommonStateInitial<F, S>();
+  CommonStateInitial<Failed, Success> initial<Failed, Success>() {
+    return CommonStateInitial<Failed, Success>();
   }
 
-  CommonStateLoading<F, S> loading<F, S>() {
-    return CommonStateLoading<F, S>();
+  CommonStateLoading<Failed, Success> loading<Failed, Success>() {
+    return CommonStateLoading<Failed, Success>();
   }
 
-  CommonStateFailed<F, S> failed<F, S>(F f) {
-    return CommonStateFailed<F, S>(
-      f,
+  CommonStateFailed<Failed, Success> failed<Failed, Success>(Failed fail) {
+    return CommonStateFailed<Failed, Success>(
+      fail,
     );
   }
 
-  CommonStateSuccessful<F, S> successful<F, S>(S s) {
-    return CommonStateSuccessful<F, S>(
-      s,
+  CommonStateSuccessful<Failed, Success> successful<Failed, Success>(
+      Success success, bool booleanOption) {
+    return CommonStateSuccessful<Failed, Success>(
+      success,
+      booleanOption,
     );
   }
 }
@@ -41,93 +43,98 @@ class _$CommonStateTearOff {
 const $CommonState = _$CommonStateTearOff();
 
 /// @nodoc
-mixin _$CommonState<F, S> {
+mixin _$CommonState<Failed, Success> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(F f) failed,
-    required TResult Function(S s) successful,
+    required TResult Function(Failed fail) failed,
+    required TResult Function(Success success, bool booleanOption) successful,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(F f)? failed,
-    TResult Function(S s)? successful,
+    TResult Function(Failed fail)? failed,
+    TResult Function(Success success, bool booleanOption)? successful,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CommonStateInitial<F, S> value) initial,
-    required TResult Function(CommonStateLoading<F, S> value) loading,
-    required TResult Function(CommonStateFailed<F, S> value) failed,
-    required TResult Function(CommonStateSuccessful<F, S> value) successful,
+    required TResult Function(CommonStateInitial<Failed, Success> value)
+        initial,
+    required TResult Function(CommonStateLoading<Failed, Success> value)
+        loading,
+    required TResult Function(CommonStateFailed<Failed, Success> value) failed,
+    required TResult Function(CommonStateSuccessful<Failed, Success> value)
+        successful,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CommonStateInitial<F, S> value)? initial,
-    TResult Function(CommonStateLoading<F, S> value)? loading,
-    TResult Function(CommonStateFailed<F, S> value)? failed,
-    TResult Function(CommonStateSuccessful<F, S> value)? successful,
+    TResult Function(CommonStateInitial<Failed, Success> value)? initial,
+    TResult Function(CommonStateLoading<Failed, Success> value)? loading,
+    TResult Function(CommonStateFailed<Failed, Success> value)? failed,
+    TResult Function(CommonStateSuccessful<Failed, Success> value)? successful,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CommonStateCopyWith<F, S, $Res> {
-  factory $CommonStateCopyWith(
-          CommonState<F, S> value, $Res Function(CommonState<F, S>) then) =
-      _$CommonStateCopyWithImpl<F, S, $Res>;
+abstract class $CommonStateCopyWith<Failed, Success, $Res> {
+  factory $CommonStateCopyWith(CommonState<Failed, Success> value,
+          $Res Function(CommonState<Failed, Success>) then) =
+      _$CommonStateCopyWithImpl<Failed, Success, $Res>;
 }
 
 /// @nodoc
-class _$CommonStateCopyWithImpl<F, S, $Res>
-    implements $CommonStateCopyWith<F, S, $Res> {
+class _$CommonStateCopyWithImpl<Failed, Success, $Res>
+    implements $CommonStateCopyWith<Failed, Success, $Res> {
   _$CommonStateCopyWithImpl(this._value, this._then);
 
-  final CommonState<F, S> _value;
+  final CommonState<Failed, Success> _value;
   // ignore: unused_field
-  final $Res Function(CommonState<F, S>) _then;
+  final $Res Function(CommonState<Failed, Success>) _then;
 }
 
 /// @nodoc
-abstract class $CommonStateInitialCopyWith<F, S, $Res> {
-  factory $CommonStateInitialCopyWith(CommonStateInitial<F, S> value,
-          $Res Function(CommonStateInitial<F, S>) then) =
-      _$CommonStateInitialCopyWithImpl<F, S, $Res>;
+abstract class $CommonStateInitialCopyWith<Failed, Success, $Res> {
+  factory $CommonStateInitialCopyWith(CommonStateInitial<Failed, Success> value,
+          $Res Function(CommonStateInitial<Failed, Success>) then) =
+      _$CommonStateInitialCopyWithImpl<Failed, Success, $Res>;
 }
 
 /// @nodoc
-class _$CommonStateInitialCopyWithImpl<F, S, $Res>
-    extends _$CommonStateCopyWithImpl<F, S, $Res>
-    implements $CommonStateInitialCopyWith<F, S, $Res> {
-  _$CommonStateInitialCopyWithImpl(CommonStateInitial<F, S> _value,
-      $Res Function(CommonStateInitial<F, S>) _then)
-      : super(_value, (v) => _then(v as CommonStateInitial<F, S>));
+class _$CommonStateInitialCopyWithImpl<Failed, Success, $Res>
+    extends _$CommonStateCopyWithImpl<Failed, Success, $Res>
+    implements $CommonStateInitialCopyWith<Failed, Success, $Res> {
+  _$CommonStateInitialCopyWithImpl(CommonStateInitial<Failed, Success> _value,
+      $Res Function(CommonStateInitial<Failed, Success>) _then)
+      : super(_value, (v) => _then(v as CommonStateInitial<Failed, Success>));
 
   @override
-  CommonStateInitial<F, S> get _value =>
-      super._value as CommonStateInitial<F, S>;
+  CommonStateInitial<Failed, Success> get _value =>
+      super._value as CommonStateInitial<Failed, Success>;
 }
 
 /// @nodoc
 
-class _$CommonStateInitial<F, S> implements CommonStateInitial<F, S> {
+class _$CommonStateInitial<Failed, Success>
+    implements CommonStateInitial<Failed, Success> {
   const _$CommonStateInitial();
 
   @override
   String toString() {
-    return 'CommonState<$F, $S>.initial()';
+    return 'CommonState<$Failed, $Success>.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CommonStateInitial<F, S>);
+    return identical(this, other) ||
+        (other is CommonStateInitial<Failed, Success>);
   }
 
   @override
@@ -138,8 +145,8 @@ class _$CommonStateInitial<F, S> implements CommonStateInitial<F, S> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(F f) failed,
-    required TResult Function(S s) successful,
+    required TResult Function(Failed fail) failed,
+    required TResult Function(Success success, bool booleanOption) successful,
   }) {
     return initial();
   }
@@ -149,8 +156,8 @@ class _$CommonStateInitial<F, S> implements CommonStateInitial<F, S> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(F f)? failed,
-    TResult Function(S s)? successful,
+    TResult Function(Failed fail)? failed,
+    TResult Function(Success success, bool booleanOption)? successful,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -162,10 +169,13 @@ class _$CommonStateInitial<F, S> implements CommonStateInitial<F, S> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CommonStateInitial<F, S> value) initial,
-    required TResult Function(CommonStateLoading<F, S> value) loading,
-    required TResult Function(CommonStateFailed<F, S> value) failed,
-    required TResult Function(CommonStateSuccessful<F, S> value) successful,
+    required TResult Function(CommonStateInitial<Failed, Success> value)
+        initial,
+    required TResult Function(CommonStateLoading<Failed, Success> value)
+        loading,
+    required TResult Function(CommonStateFailed<Failed, Success> value) failed,
+    required TResult Function(CommonStateSuccessful<Failed, Success> value)
+        successful,
   }) {
     return initial(this);
   }
@@ -173,10 +183,10 @@ class _$CommonStateInitial<F, S> implements CommonStateInitial<F, S> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CommonStateInitial<F, S> value)? initial,
-    TResult Function(CommonStateLoading<F, S> value)? loading,
-    TResult Function(CommonStateFailed<F, S> value)? failed,
-    TResult Function(CommonStateSuccessful<F, S> value)? successful,
+    TResult Function(CommonStateInitial<Failed, Success> value)? initial,
+    TResult Function(CommonStateLoading<Failed, Success> value)? loading,
+    TResult Function(CommonStateFailed<Failed, Success> value)? failed,
+    TResult Function(CommonStateSuccessful<Failed, Success> value)? successful,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -186,43 +196,46 @@ class _$CommonStateInitial<F, S> implements CommonStateInitial<F, S> {
   }
 }
 
-abstract class CommonStateInitial<F, S> implements CommonState<F, S> {
-  const factory CommonStateInitial() = _$CommonStateInitial<F, S>;
+abstract class CommonStateInitial<Failed, Success>
+    implements CommonState<Failed, Success> {
+  const factory CommonStateInitial() = _$CommonStateInitial<Failed, Success>;
 }
 
 /// @nodoc
-abstract class $CommonStateLoadingCopyWith<F, S, $Res> {
-  factory $CommonStateLoadingCopyWith(CommonStateLoading<F, S> value,
-          $Res Function(CommonStateLoading<F, S>) then) =
-      _$CommonStateLoadingCopyWithImpl<F, S, $Res>;
+abstract class $CommonStateLoadingCopyWith<Failed, Success, $Res> {
+  factory $CommonStateLoadingCopyWith(CommonStateLoading<Failed, Success> value,
+          $Res Function(CommonStateLoading<Failed, Success>) then) =
+      _$CommonStateLoadingCopyWithImpl<Failed, Success, $Res>;
 }
 
 /// @nodoc
-class _$CommonStateLoadingCopyWithImpl<F, S, $Res>
-    extends _$CommonStateCopyWithImpl<F, S, $Res>
-    implements $CommonStateLoadingCopyWith<F, S, $Res> {
-  _$CommonStateLoadingCopyWithImpl(CommonStateLoading<F, S> _value,
-      $Res Function(CommonStateLoading<F, S>) _then)
-      : super(_value, (v) => _then(v as CommonStateLoading<F, S>));
+class _$CommonStateLoadingCopyWithImpl<Failed, Success, $Res>
+    extends _$CommonStateCopyWithImpl<Failed, Success, $Res>
+    implements $CommonStateLoadingCopyWith<Failed, Success, $Res> {
+  _$CommonStateLoadingCopyWithImpl(CommonStateLoading<Failed, Success> _value,
+      $Res Function(CommonStateLoading<Failed, Success>) _then)
+      : super(_value, (v) => _then(v as CommonStateLoading<Failed, Success>));
 
   @override
-  CommonStateLoading<F, S> get _value =>
-      super._value as CommonStateLoading<F, S>;
+  CommonStateLoading<Failed, Success> get _value =>
+      super._value as CommonStateLoading<Failed, Success>;
 }
 
 /// @nodoc
 
-class _$CommonStateLoading<F, S> implements CommonStateLoading<F, S> {
+class _$CommonStateLoading<Failed, Success>
+    implements CommonStateLoading<Failed, Success> {
   const _$CommonStateLoading();
 
   @override
   String toString() {
-    return 'CommonState<$F, $S>.loading()';
+    return 'CommonState<$Failed, $Success>.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is CommonStateLoading<F, S>);
+    return identical(this, other) ||
+        (other is CommonStateLoading<Failed, Success>);
   }
 
   @override
@@ -233,8 +246,8 @@ class _$CommonStateLoading<F, S> implements CommonStateLoading<F, S> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(F f) failed,
-    required TResult Function(S s) successful,
+    required TResult Function(Failed fail) failed,
+    required TResult Function(Success success, bool booleanOption) successful,
   }) {
     return loading();
   }
@@ -244,8 +257,8 @@ class _$CommonStateLoading<F, S> implements CommonStateLoading<F, S> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(F f)? failed,
-    TResult Function(S s)? successful,
+    TResult Function(Failed fail)? failed,
+    TResult Function(Success success, bool booleanOption)? successful,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -257,10 +270,13 @@ class _$CommonStateLoading<F, S> implements CommonStateLoading<F, S> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CommonStateInitial<F, S> value) initial,
-    required TResult Function(CommonStateLoading<F, S> value) loading,
-    required TResult Function(CommonStateFailed<F, S> value) failed,
-    required TResult Function(CommonStateSuccessful<F, S> value) successful,
+    required TResult Function(CommonStateInitial<Failed, Success> value)
+        initial,
+    required TResult Function(CommonStateLoading<Failed, Success> value)
+        loading,
+    required TResult Function(CommonStateFailed<Failed, Success> value) failed,
+    required TResult Function(CommonStateSuccessful<Failed, Success> value)
+        successful,
   }) {
     return loading(this);
   }
@@ -268,10 +284,10 @@ class _$CommonStateLoading<F, S> implements CommonStateLoading<F, S> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CommonStateInitial<F, S> value)? initial,
-    TResult Function(CommonStateLoading<F, S> value)? loading,
-    TResult Function(CommonStateFailed<F, S> value)? failed,
-    TResult Function(CommonStateSuccessful<F, S> value)? successful,
+    TResult Function(CommonStateInitial<Failed, Success> value)? initial,
+    TResult Function(CommonStateLoading<Failed, Success> value)? loading,
+    TResult Function(CommonStateFailed<Failed, Success> value)? failed,
+    TResult Function(CommonStateSuccessful<Failed, Success> value)? successful,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -281,82 +297,86 @@ class _$CommonStateLoading<F, S> implements CommonStateLoading<F, S> {
   }
 }
 
-abstract class CommonStateLoading<F, S> implements CommonState<F, S> {
-  const factory CommonStateLoading() = _$CommonStateLoading<F, S>;
+abstract class CommonStateLoading<Failed, Success>
+    implements CommonState<Failed, Success> {
+  const factory CommonStateLoading() = _$CommonStateLoading<Failed, Success>;
 }
 
 /// @nodoc
-abstract class $CommonStateFailedCopyWith<F, S, $Res> {
-  factory $CommonStateFailedCopyWith(CommonStateFailed<F, S> value,
-          $Res Function(CommonStateFailed<F, S>) then) =
-      _$CommonStateFailedCopyWithImpl<F, S, $Res>;
-  $Res call({F f});
+abstract class $CommonStateFailedCopyWith<Failed, Success, $Res> {
+  factory $CommonStateFailedCopyWith(CommonStateFailed<Failed, Success> value,
+          $Res Function(CommonStateFailed<Failed, Success>) then) =
+      _$CommonStateFailedCopyWithImpl<Failed, Success, $Res>;
+  $Res call({Failed fail});
 }
 
 /// @nodoc
-class _$CommonStateFailedCopyWithImpl<F, S, $Res>
-    extends _$CommonStateCopyWithImpl<F, S, $Res>
-    implements $CommonStateFailedCopyWith<F, S, $Res> {
-  _$CommonStateFailedCopyWithImpl(CommonStateFailed<F, S> _value,
-      $Res Function(CommonStateFailed<F, S>) _then)
-      : super(_value, (v) => _then(v as CommonStateFailed<F, S>));
+class _$CommonStateFailedCopyWithImpl<Failed, Success, $Res>
+    extends _$CommonStateCopyWithImpl<Failed, Success, $Res>
+    implements $CommonStateFailedCopyWith<Failed, Success, $Res> {
+  _$CommonStateFailedCopyWithImpl(CommonStateFailed<Failed, Success> _value,
+      $Res Function(CommonStateFailed<Failed, Success>) _then)
+      : super(_value, (v) => _then(v as CommonStateFailed<Failed, Success>));
 
   @override
-  CommonStateFailed<F, S> get _value => super._value as CommonStateFailed<F, S>;
+  CommonStateFailed<Failed, Success> get _value =>
+      super._value as CommonStateFailed<Failed, Success>;
 
   @override
   $Res call({
-    Object? f = freezed,
+    Object? fail = freezed,
   }) {
-    return _then(CommonStateFailed<F, S>(
-      f == freezed
-          ? _value.f
-          : f // ignore: cast_nullable_to_non_nullable
-              as F,
+    return _then(CommonStateFailed<Failed, Success>(
+      fail == freezed
+          ? _value.fail
+          : fail // ignore: cast_nullable_to_non_nullable
+              as Failed,
     ));
   }
 }
 
 /// @nodoc
 
-class _$CommonStateFailed<F, S> implements CommonStateFailed<F, S> {
-  const _$CommonStateFailed(this.f);
+class _$CommonStateFailed<Failed, Success>
+    implements CommonStateFailed<Failed, Success> {
+  const _$CommonStateFailed(this.fail);
 
   @override
-  final F f;
+  final Failed fail;
 
   @override
   String toString() {
-    return 'CommonState<$F, $S>.failed(f: $f)';
+    return 'CommonState<$Failed, $Success>.failed(fail: $fail)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommonStateFailed<F, S> &&
-            (identical(other.f, f) ||
-                const DeepCollectionEquality().equals(other.f, f)));
+        (other is CommonStateFailed<Failed, Success> &&
+            (identical(other.fail, fail) ||
+                const DeepCollectionEquality().equals(other.fail, fail)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(f);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(fail);
 
   @JsonKey(ignore: true)
   @override
-  $CommonStateFailedCopyWith<F, S, CommonStateFailed<F, S>> get copyWith =>
-      _$CommonStateFailedCopyWithImpl<F, S, CommonStateFailed<F, S>>(
-          this, _$identity);
+  $CommonStateFailedCopyWith<Failed, Success,
+          CommonStateFailed<Failed, Success>>
+      get copyWith => _$CommonStateFailedCopyWithImpl<Failed, Success,
+          CommonStateFailed<Failed, Success>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(F f) failed,
-    required TResult Function(S s) successful,
+    required TResult Function(Failed fail) failed,
+    required TResult Function(Success success, bool booleanOption) successful,
   }) {
-    return failed(f);
+    return failed(fail);
   }
 
   @override
@@ -364,12 +384,12 @@ class _$CommonStateFailed<F, S> implements CommonStateFailed<F, S> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(F f)? failed,
-    TResult Function(S s)? successful,
+    TResult Function(Failed fail)? failed,
+    TResult Function(Success success, bool booleanOption)? successful,
     required TResult orElse(),
   }) {
     if (failed != null) {
-      return failed(f);
+      return failed(fail);
     }
     return orElse();
   }
@@ -377,10 +397,13 @@ class _$CommonStateFailed<F, S> implements CommonStateFailed<F, S> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CommonStateInitial<F, S> value) initial,
-    required TResult Function(CommonStateLoading<F, S> value) loading,
-    required TResult Function(CommonStateFailed<F, S> value) failed,
-    required TResult Function(CommonStateSuccessful<F, S> value) successful,
+    required TResult Function(CommonStateInitial<Failed, Success> value)
+        initial,
+    required TResult Function(CommonStateLoading<Failed, Success> value)
+        loading,
+    required TResult Function(CommonStateFailed<Failed, Success> value) failed,
+    required TResult Function(CommonStateSuccessful<Failed, Success> value)
+        successful,
   }) {
     return failed(this);
   }
@@ -388,10 +411,10 @@ class _$CommonStateFailed<F, S> implements CommonStateFailed<F, S> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CommonStateInitial<F, S> value)? initial,
-    TResult Function(CommonStateLoading<F, S> value)? loading,
-    TResult Function(CommonStateFailed<F, S> value)? failed,
-    TResult Function(CommonStateSuccessful<F, S> value)? successful,
+    TResult Function(CommonStateInitial<Failed, Success> value)? initial,
+    TResult Function(CommonStateLoading<Failed, Success> value)? loading,
+    TResult Function(CommonStateFailed<Failed, Success> value)? failed,
+    TResult Function(CommonStateSuccessful<Failed, Success> value)? successful,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -401,88 +424,109 @@ class _$CommonStateFailed<F, S> implements CommonStateFailed<F, S> {
   }
 }
 
-abstract class CommonStateFailed<F, S> implements CommonState<F, S> {
-  const factory CommonStateFailed(F f) = _$CommonStateFailed<F, S>;
+abstract class CommonStateFailed<Failed, Success>
+    implements CommonState<Failed, Success> {
+  const factory CommonStateFailed(Failed fail) =
+      _$CommonStateFailed<Failed, Success>;
 
-  F get f => throw _privateConstructorUsedError;
+  Failed get fail => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CommonStateFailedCopyWith<F, S, CommonStateFailed<F, S>> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CommonStateFailedCopyWith<Failed, Success,
+          CommonStateFailed<Failed, Success>>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CommonStateSuccessfulCopyWith<F, S, $Res> {
-  factory $CommonStateSuccessfulCopyWith(CommonStateSuccessful<F, S> value,
-          $Res Function(CommonStateSuccessful<F, S>) then) =
-      _$CommonStateSuccessfulCopyWithImpl<F, S, $Res>;
-  $Res call({S s});
+abstract class $CommonStateSuccessfulCopyWith<Failed, Success, $Res> {
+  factory $CommonStateSuccessfulCopyWith(
+          CommonStateSuccessful<Failed, Success> value,
+          $Res Function(CommonStateSuccessful<Failed, Success>) then) =
+      _$CommonStateSuccessfulCopyWithImpl<Failed, Success, $Res>;
+  $Res call({Success success, bool booleanOption});
 }
 
 /// @nodoc
-class _$CommonStateSuccessfulCopyWithImpl<F, S, $Res>
-    extends _$CommonStateCopyWithImpl<F, S, $Res>
-    implements $CommonStateSuccessfulCopyWith<F, S, $Res> {
-  _$CommonStateSuccessfulCopyWithImpl(CommonStateSuccessful<F, S> _value,
-      $Res Function(CommonStateSuccessful<F, S>) _then)
-      : super(_value, (v) => _then(v as CommonStateSuccessful<F, S>));
+class _$CommonStateSuccessfulCopyWithImpl<Failed, Success, $Res>
+    extends _$CommonStateCopyWithImpl<Failed, Success, $Res>
+    implements $CommonStateSuccessfulCopyWith<Failed, Success, $Res> {
+  _$CommonStateSuccessfulCopyWithImpl(
+      CommonStateSuccessful<Failed, Success> _value,
+      $Res Function(CommonStateSuccessful<Failed, Success>) _then)
+      : super(
+            _value, (v) => _then(v as CommonStateSuccessful<Failed, Success>));
 
   @override
-  CommonStateSuccessful<F, S> get _value =>
-      super._value as CommonStateSuccessful<F, S>;
+  CommonStateSuccessful<Failed, Success> get _value =>
+      super._value as CommonStateSuccessful<Failed, Success>;
 
   @override
   $Res call({
-    Object? s = freezed,
+    Object? success = freezed,
+    Object? booleanOption = freezed,
   }) {
-    return _then(CommonStateSuccessful<F, S>(
-      s == freezed
-          ? _value.s
-          : s // ignore: cast_nullable_to_non_nullable
-              as S,
+    return _then(CommonStateSuccessful<Failed, Success>(
+      success == freezed
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as Success,
+      booleanOption == freezed
+          ? _value.booleanOption
+          : booleanOption // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
 
 /// @nodoc
 
-class _$CommonStateSuccessful<F, S> implements CommonStateSuccessful<F, S> {
-  const _$CommonStateSuccessful(this.s);
+class _$CommonStateSuccessful<Failed, Success>
+    implements CommonStateSuccessful<Failed, Success> {
+  const _$CommonStateSuccessful(this.success, this.booleanOption);
 
   @override
-  final S s;
+  final Success success;
+  @override
+  final bool booleanOption;
 
   @override
   String toString() {
-    return 'CommonState<$F, $S>.successful(s: $s)';
+    return 'CommonState<$Failed, $Success>.successful(success: $success, booleanOption: $booleanOption)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is CommonStateSuccessful<F, S> &&
-            (identical(other.s, s) ||
-                const DeepCollectionEquality().equals(other.s, s)));
+        (other is CommonStateSuccessful<Failed, Success> &&
+            (identical(other.success, success) ||
+                const DeepCollectionEquality()
+                    .equals(other.success, success)) &&
+            (identical(other.booleanOption, booleanOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.booleanOption, booleanOption)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(s);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(success) ^
+      const DeepCollectionEquality().hash(booleanOption);
 
   @JsonKey(ignore: true)
   @override
-  $CommonStateSuccessfulCopyWith<F, S, CommonStateSuccessful<F, S>>
-      get copyWith => _$CommonStateSuccessfulCopyWithImpl<F, S,
-          CommonStateSuccessful<F, S>>(this, _$identity);
+  $CommonStateSuccessfulCopyWith<Failed, Success,
+          CommonStateSuccessful<Failed, Success>>
+      get copyWith => _$CommonStateSuccessfulCopyWithImpl<Failed, Success,
+          CommonStateSuccessful<Failed, Success>>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(F f) failed,
-    required TResult Function(S s) successful,
+    required TResult Function(Failed fail) failed,
+    required TResult Function(Success success, bool booleanOption) successful,
   }) {
-    return successful(s);
+    return successful(success, booleanOption);
   }
 
   @override
@@ -490,12 +534,12 @@ class _$CommonStateSuccessful<F, S> implements CommonStateSuccessful<F, S> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(F f)? failed,
-    TResult Function(S s)? successful,
+    TResult Function(Failed fail)? failed,
+    TResult Function(Success success, bool booleanOption)? successful,
     required TResult orElse(),
   }) {
     if (successful != null) {
-      return successful(s);
+      return successful(success, booleanOption);
     }
     return orElse();
   }
@@ -503,10 +547,13 @@ class _$CommonStateSuccessful<F, S> implements CommonStateSuccessful<F, S> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(CommonStateInitial<F, S> value) initial,
-    required TResult Function(CommonStateLoading<F, S> value) loading,
-    required TResult Function(CommonStateFailed<F, S> value) failed,
-    required TResult Function(CommonStateSuccessful<F, S> value) successful,
+    required TResult Function(CommonStateInitial<Failed, Success> value)
+        initial,
+    required TResult Function(CommonStateLoading<Failed, Success> value)
+        loading,
+    required TResult Function(CommonStateFailed<Failed, Success> value) failed,
+    required TResult Function(CommonStateSuccessful<Failed, Success> value)
+        successful,
   }) {
     return successful(this);
   }
@@ -514,10 +561,10 @@ class _$CommonStateSuccessful<F, S> implements CommonStateSuccessful<F, S> {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(CommonStateInitial<F, S> value)? initial,
-    TResult Function(CommonStateLoading<F, S> value)? loading,
-    TResult Function(CommonStateFailed<F, S> value)? failed,
-    TResult Function(CommonStateSuccessful<F, S> value)? successful,
+    TResult Function(CommonStateInitial<Failed, Success> value)? initial,
+    TResult Function(CommonStateLoading<Failed, Success> value)? loading,
+    TResult Function(CommonStateFailed<Failed, Success> value)? failed,
+    TResult Function(CommonStateSuccessful<Failed, Success> value)? successful,
     required TResult orElse(),
   }) {
     if (successful != null) {
@@ -527,11 +574,15 @@ class _$CommonStateSuccessful<F, S> implements CommonStateSuccessful<F, S> {
   }
 }
 
-abstract class CommonStateSuccessful<F, S> implements CommonState<F, S> {
-  const factory CommonStateSuccessful(S s) = _$CommonStateSuccessful<F, S>;
+abstract class CommonStateSuccessful<Failed, Success>
+    implements CommonState<Failed, Success> {
+  const factory CommonStateSuccessful(Success success, bool booleanOption) =
+      _$CommonStateSuccessful<Failed, Success>;
 
-  S get s => throw _privateConstructorUsedError;
+  Success get success => throw _privateConstructorUsedError;
+  bool get booleanOption => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CommonStateSuccessfulCopyWith<F, S, CommonStateSuccessful<F, S>>
+  $CommonStateSuccessfulCopyWith<Failed, Success,
+          CommonStateSuccessful<Failed, Success>>
       get copyWith => throw _privateConstructorUsedError;
 }

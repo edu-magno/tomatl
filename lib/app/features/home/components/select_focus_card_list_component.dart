@@ -17,7 +17,7 @@ class _SelectFocusCardListComponentState
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 105,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: timerTypes
@@ -29,11 +29,11 @@ class _SelectFocusCardListComponentState
                   setState(() => selectedFocusCard = timer.id);
 
                   context
-                      .read(selectFocusStateNotifierProvider.notifier)
-                      .focus(timer);
+                      .read(selectTimerStateNotifierProvider.notifier)
+                      .timer(timer);
                   context
-                      .read(focusStateNotifierProvider.notifier)
-                      .selectFocus();
+                      .read(timerStateNotifierProvider.notifier)
+                      .selectTimer();
                 },
               ),
             )

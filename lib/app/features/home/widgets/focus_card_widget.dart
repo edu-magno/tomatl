@@ -22,19 +22,23 @@ class FocusCardWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 115,
+        width: 125,
         margin: EdgeInsets.all(10.0),
         child: Card(
           color: isSelected ? TomatlColors.secondary : Colors.white,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              VerticalSpacing10(),
-              FocusCardTitleWidget(title: timer.title, isSelected: isSelected),
-              VerticalSpacing10(),
+              FocusCardTitleWidget(
+                title: timer.title,
+                isSelected: isSelected,
+              ),
               FocusCardInfoWidget(
-                  interval: timer.interval,
-                  focus: timer.focus,
-                  isSelected: isSelected),
+                interval: timer.interval,
+                focus: timer.focus,
+                isSelected: isSelected,
+              ),
               VerticalSpacing10(),
             ],
           ),

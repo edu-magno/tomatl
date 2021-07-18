@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import '../../../../shared/theme/tomatl_colors.dart';
+import '../../../../shared/theme/tomatl_typography.dart';
 import '../../../../shared/widgets/default_container_widget.dart';
 
 class FocusCardTitleWidget extends StatelessWidget {
@@ -14,20 +16,13 @@ class FocusCardTitleWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultContainer(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: isSelected
-                  ? TomatlColors.primary.shade50
-                  : TomatlColors.primary,
-            ),
-          ),
-        ],
+      child: Text(
+        title,
+        style: tomatlTypography.headline6?.copyWith(
+          fontWeight: FontWeight.bold,
+          color:
+              isSelected ? TomatlColors.primary.shade50 : TomatlColors.primary,
+        ),
       ),
     );
   }
