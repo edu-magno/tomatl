@@ -36,6 +36,8 @@ dependencies:
   flutter_riverpod: ^0.14.0+3
   intl: ^0.17.0
   google_fonts: ^2.1.0
+  flutter_sound: ^8.2.0
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

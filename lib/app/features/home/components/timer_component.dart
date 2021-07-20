@@ -27,6 +27,7 @@ class _TimerComponentState extends State<TimerComponent> {
             if (isInterval) {
               return Column(
                 children: [
+                  Text('INTERVAL'),
                   Text(
                     time,
                     style: tomatlTypography.headline1,
@@ -37,6 +38,7 @@ class _TimerComponentState extends State<TimerComponent> {
 
             return Column(
               children: [
+                Text('FOCUS'),
                 Text(
                   time,
                   style: tomatlTypography.headline1,

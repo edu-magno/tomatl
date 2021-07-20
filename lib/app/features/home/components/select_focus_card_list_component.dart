@@ -12,7 +12,7 @@ class SelectFocusCardListComponent extends StatefulWidget {
 
 class _SelectFocusCardListComponentState
     extends State<SelectFocusCardListComponent> {
-  int? selectedFocusCard;
+  int selectedFocusCard = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,8 @@ class _SelectFocusCardListComponentState
                   setState(() => selectedFocusCard = timer.id);
 
                   context
-                      .read(selectTimerStateNotifierProvider.notifier)
-                      .timer(timer);
-                  context
                       .read(timerStateNotifierProvider.notifier)
-                      .selectTimer();
+                      .selectTimer(timer);
                 },
               ),
             )

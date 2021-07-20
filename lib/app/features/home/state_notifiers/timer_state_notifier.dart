@@ -6,17 +6,11 @@ import '../../../../shared/utils/common_state/common_state.dart';
 import '../../../../shared/utils/formaters.dart';
 import '../../../models/timer_type_model.dart';
 import '../utils/timer_type.dart';
-import 'select_timer_state_notifier.dart';
 
 typedef TimerState = CommonState<String, String>;
 
 class TimerStateNotifier extends StateNotifier<TimerState> {
-  TimerStateNotifier({
-    required SelectTimerStateNotifer selectFocusStateNotifier,
-  })  : _selectTimerStateNotifier = selectFocusStateNotifier,
-        super(TimerState.initial());
-
-  final SelectTimerStateNotifer _selectTimerStateNotifier;
+  TimerStateNotifier() : super(TimerState.initial());
 
   /// timer that tick each second
   late Timer _timer;
@@ -24,62 +18,77 @@ class TimerStateNotifier extends StateNotifier<TimerState> {
   /// total time of selected timer in minutes
   int rawTime = 0;
 
-  /// seconds of timer
+  /// [seconds] of timer
   int seconds = 60;
 
-  /// bool that check if is a intervaL or focus time
+  /// bool that check if is a [intervaL] or [focus] time
   bool isInterval = false;
+
+  /// [focusCount] that be increment after [focus] time over
+  ///
+  /// when count arrive in four they must be reseted
+  int focusCount = 1;
+
+  TomatlTimer selectedTimer = timerTypes[0];
 
   /// first tick of focus
   void initialTimer() {
-    _selectTimerStateNotifier.timer(timerTypes[0]);
-
-    state = TimerState.successful(
-      timeFormat(timerTypes[0].focus, 0),
-      false,
-    );
-  }
-
-  void selectTimer() {
-    final selectedTimer =
-        ((_selectTimerStateNotifier.state as CommonStateSuccessful).success)
-            as TomatlTimer;
-
-    // first tick
     state = TimerState.successful(
       timeFormat(selectedTimer.focus, 0),
       false,
     );
+    rawTime = rawTimeFormat(timerTypes[0].focus);
+  }
+
+  // TODO talvez nao é necessario ter um state para o selectTimer
+  void selectTimer(TomatlTimer timer) {
+    // first tick
+    state = TimerState.successful(
+      timeFormat(timer.focus, 0),
+      false,
+    );
+
+    rawTime = rawTimeFormat(timer.focus);
+    seconds = 60;
   }
 
   void startTimer() {
-    final selectedTimer =
-        ((_selectTimerStateNotifier.state as CommonStateSuccessful).success)
-            as TomatlTimer;
-
-    rawTime = rawTimeFormat(selectedTimer.focus);
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
         rawTime -= 1;
-
+        print(rawTime);
         if (rawTime == 0) {
           final previousIsInterval =
               (state as CommonStateSuccessful).booleanOption;
 
           isInterval = !previousIsInterval;
-          // when rawTime arrive in 0 they must
-          // restart with interval or focus
+
+          focusCount = previousIsInterval ? focusCount : focusCount += 1;
+          // when [rawTime] arrive in 0 they must
+          // restart with [interval] or [focus]
+
+          // if [focusCount] is 4, the next [interval] must be 4 time longer
+          final intervalRawTime = focusCount == 4
+              ? rawTimeFormat(selectedTimer.interval) * 4
+              : rawTimeFormat(selectedTimer.interval);
+
+          if (focusCount == 4) {
+            focusCount = 1;
+          }
+
+          // if [previousIsInterval] is true is focus time else is interval
           rawTime = previousIsInterval
               ? rawTimeFormat(selectedTimer.focus)
-              : rawTimeFormat(selectedTimer.interval);
+              : intervalRawTime;
         }
 
-
-        // when seconds arrive in 0 they must restart
+        // when [seconds] arrive in 0 they must restart
         if (seconds == 0) {
           state = TimerState.successful(
-              timeFormat(minutesFormat(rawTime), 59), isInterval);
+            timeFormat(minutesFormat(rawTime), 59),
+            isInterval,
+          );
           seconds = 59;
           return;
         }
