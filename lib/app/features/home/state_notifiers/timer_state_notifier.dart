@@ -1,10 +1,13 @@
 import 'dart:async';
 
+import 'package:just_audio/just_audio.dart';
 import 'package:state_notifier/state_notifier.dart';
 
 import '../../../../shared/utils/common_state/common_state.dart';
+import '../../../../shared/utils/constants/constants.dart';
 import '../../../../shared/utils/formaters.dart';
 import '../../../models/timer_type_model.dart';
+import '../utils/sound_player.dart';
 import '../utils/timer_type.dart';
 
 typedef TimerState = CommonState<String, String>;
@@ -40,7 +43,6 @@ class TimerStateNotifier extends StateNotifier<TimerState> {
     rawTime = rawTimeFormat(timerTypes[0].focus);
   }
 
-  // TODO talvez nao é necessario ter um state para o selectTimer
   void selectTimer(TomatlTimer timer) {
     // first tick
     state = TimerState.successful(
@@ -53,11 +55,13 @@ class TimerStateNotifier extends StateNotifier<TimerState> {
   }
 
   void startTimer() {
+    final player = AudioPlayer();
+
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
         rawTime -= 1;
-        print(rawTime);
+
         if (rawTime == 0) {
           final previousIsInterval =
               (state as CommonStateSuccessful).booleanOption;
@@ -81,6 +85,10 @@ class TimerStateNotifier extends StateNotifier<TimerState> {
           rawTime = previousIsInterval
               ? rawTimeFormat(selectedTimer.focus)
               : intervalRawTime;
+
+          previousIsInterval
+              ? playAlertSound(player, Constants.endFocusPath)
+              : playAlertSound(player, Constants.endinterval);
         }
 
         // when [seconds] arrive in 0 they must restart

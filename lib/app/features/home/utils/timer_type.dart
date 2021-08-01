@@ -5,7 +5,7 @@ List<TomatlTimer> timerTypes = [
     id: 1,
     title: 'Padrão',
     interval: 1,
-    focus: 2,
+    focus: 1,
   ),
   // description:
   //     "Temporizador com  marcação de 25 minutos com intervalo de 5 minutos com uma pausa mais longa (30 minutos) a cada 4 marcações"),
