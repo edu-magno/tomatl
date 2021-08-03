@@ -6,10 +6,10 @@ import '../../../../shared/widgets/vertical_spacing_20.dart';
 import '../components/select_focus_card_list_component.dart';
 import '../components/timer_component.dart';
 import '../home_providers.dart';
-import '../widgets/help_widget.dart';
-import '../widgets/home_title_widget.dart';
-import '../widgets/pause_button_widget.dart';
-import '../widgets/play_button_widget.dart';
+import '../widgets/common_widgets/home_title_widget.dart';
+import '../widgets/common_widgets/pause_button_widget.dart';
+import '../widgets/common_widgets/play_button_widget.dart';
+import '../widgets/help_widget/help_widget.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -33,14 +33,8 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             VerticalSpacing20(),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                HomeTitleWidget(),
-                HelpWidget(),
-              ],
-            ),
+            HomeTitleWidget(),
+            HelpWidget(),
             SelectFocusCardListComponent(),
             Spacer(),
             TimerComponent(),

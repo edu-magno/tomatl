@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../../../../shared/theme/tomatl_colors.dart';
-import '../../../../shared/widgets/vertical_spacing_10.dart';
-import '../../../models/timer_type_model.dart';
-import 'focus_card_info_widget.dart';
-import 'focus_card_title_widget.dart';
+import '../../../../../shared/theme/tomatl_colors.dart';
+import '../../../../../shared/widgets/vertical_spacing_10.dart';
+import '../../../../models/timer_type_model.dart';
+import 'timer_card_info_widget.dart';
+import 'timer_card_title_widget.dart';
 
 class FocusCardWidget extends StatelessWidget {
   final TomatlTimer timer;

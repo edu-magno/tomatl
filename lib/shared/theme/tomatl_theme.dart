@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'tomatl_colors.dart';
 
 final ThemeData tomatlDefaultTheme = ThemeData(
     backgroundColor: TomatlColors.primary.shade50,
     hintColor: TomatlColors.primary.shade800,
     appBarTheme: AppBarTheme(
+      brightness: Brightness.dark,
       backgroundColor: TomatlColors.primary.shade900,
       iconTheme: IconThemeData(
         color: TomatlColors.primary.shade50,

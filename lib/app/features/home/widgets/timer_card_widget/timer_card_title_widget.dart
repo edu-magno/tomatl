@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../shared/theme/tomatl_colors.dart';
-import '../../../../shared/theme/tomatl_typography.dart';
-import '../../../../shared/widgets/default_container_widget.dart';
+import '../../../../../shared/theme/tomatl_colors.dart';
+import '../../../../../shared/theme/tomatl_typography.dart';
+import '../../../../../shared/widgets/default_container_widget.dart';
 
 class FocusCardTitleWidget extends StatelessWidget {
   final String title;

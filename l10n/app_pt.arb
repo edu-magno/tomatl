@@ -1,0 +1,12 @@
+{
+    "defaultTimerDescription": "Temporizador com  marcação de 25 minutos com intervalo de 5 minutos com uma pausa mais longa (30 minutos) a cada 4 marcações",
+    "fastTimerDescription": "Temporizador com  marcação de 15 minutos com intervalo de 3 minutos com uma pausa mais longa (10 minutos) a cada 4 marcações",
+    "longTimerDescription": "Temporizador com  marcação de 60 minutos com intervalo de 10 minutos com uma pausa mais longa (50 minutos) a cada 4 marcações",
+    "customTimerDescription": "Você escolhe o tempo de cada marcação e intervalo, e nós calculamos a pausa mais longa para você :)",
+    "defaultTimer": "Padrão",
+    "fastTimer": "Rápida",
+    "longTimer": "Longa",
+    "customTimer":"Custom",
+    "back": "Voltar",
+    "ok": "Ok"
+}

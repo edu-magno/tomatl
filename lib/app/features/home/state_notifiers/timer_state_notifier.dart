@@ -8,7 +8,7 @@ import '../../../../shared/utils/constants/constants.dart';
 import '../../../../shared/utils/formaters.dart';
 import '../../../models/timer_type_model.dart';
 import '../utils/sound_player.dart';
-import '../utils/timer_type.dart';
+import '../utils/timer_template.dart';
 
 typedef TimerState = CommonState<String, String>;
 
@@ -32,7 +32,7 @@ class TimerStateNotifier extends StateNotifier<TimerState> {
   /// when count arrive in four they must be reseted
   int focusCount = 1;
 
-  TomatlTimer selectedTimer = timerTypes[0];
+  TomatlTimer selectedTimer = timerTemplates[0];
 
   /// first tick of focus
   void initialTimer() {
@@ -40,7 +40,7 @@ class TimerStateNotifier extends StateNotifier<TimerState> {
       timeFormat(selectedTimer.focus, 0),
       false,
     );
-    rawTime = rawTimeFormat(timerTypes[0].focus);
+    rawTime = rawTimeFormat(timerTemplates[0].focus);
   }
 
   void selectTimer(TomatlTimer timer) {

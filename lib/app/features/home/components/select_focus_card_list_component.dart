@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../home_providers.dart';
-import '../utils/timer_type.dart';
-import '../widgets/focus_card_widget.dart';
+import '../utils/timer_template.dart';
+import '../widgets/timer_card_widget/timer_card_widget.dart';
 
 class SelectFocusCardListComponent extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _SelectFocusCardListComponentState
       height: 105,
       child: ListView(
         scrollDirection: Axis.horizontal,
-        children: timerTypes
+        children: timerTemplates
             .map(
               (timer) => FocusCardWidget(
                 timer: timer,
