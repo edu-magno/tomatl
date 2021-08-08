@@ -8,5 +8,6 @@
     "longTimer": "Longa",
     "customTimer":"Custom",
     "back": "Voltar",
-    "ok": "Ok"
+    "ok": "Ok",
+    "homeTitle":"Selecione o estilo do temporizador"
 }

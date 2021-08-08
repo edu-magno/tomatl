@@ -23,7 +23,7 @@ class _TimerComponentState extends State<TimerComponent> {
         final state = watch(timerStateNotifierProvider);
 
         return state.maybeWhen(
-          successful: (time, isInterval) {
+          successful: (time, isInterval, isPlaying) {
             if (isInterval) {
               return Column(
                 children: [

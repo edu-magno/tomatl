@@ -6,7 +6,7 @@ import '../../../../../shared/widgets/vertical_spacing_10.dart';
 import 'help_text_widget.dart';
 import 'help_title_widget.dart';
 
-// TODO refactor
+// TODO maybe should refactor
 class HelpWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

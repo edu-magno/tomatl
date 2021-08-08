@@ -31,10 +31,11 @@ class _$CommonStateTearOff {
   }
 
   CommonStateSuccessful<Failed, Success> successful<Failed, Success>(
-      Success success, bool booleanOption) {
+      Success success, bool booleanOption, bool secondBooleanOption) {
     return CommonStateSuccessful<Failed, Success>(
       success,
       booleanOption,
+      secondBooleanOption,
     );
   }
 }
@@ -49,7 +50,9 @@ mixin _$CommonState<Failed, Success> {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failed fail) failed,
-    required TResult Function(Success success, bool booleanOption) successful,
+    required TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)
+        successful,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,7 +60,9 @@ mixin _$CommonState<Failed, Success> {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failed fail)? failed,
-    TResult Function(Success success, bool booleanOption)? successful,
+    TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)?
+        successful,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -146,7 +151,9 @@ class _$CommonStateInitial<Failed, Success>
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failed fail) failed,
-    required TResult Function(Success success, bool booleanOption) successful,
+    required TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)
+        successful,
   }) {
     return initial();
   }
@@ -157,7 +164,9 @@ class _$CommonStateInitial<Failed, Success>
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failed fail)? failed,
-    TResult Function(Success success, bool booleanOption)? successful,
+    TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)?
+        successful,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -247,7 +256,9 @@ class _$CommonStateLoading<Failed, Success>
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failed fail) failed,
-    required TResult Function(Success success, bool booleanOption) successful,
+    required TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)
+        successful,
   }) {
     return loading();
   }
@@ -258,7 +269,9 @@ class _$CommonStateLoading<Failed, Success>
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failed fail)? failed,
-    TResult Function(Success success, bool booleanOption)? successful,
+    TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)?
+        successful,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -374,7 +387,9 @@ class _$CommonStateFailed<Failed, Success>
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failed fail) failed,
-    required TResult Function(Success success, bool booleanOption) successful,
+    required TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)
+        successful,
   }) {
     return failed(fail);
   }
@@ -385,7 +400,9 @@ class _$CommonStateFailed<Failed, Success>
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failed fail)? failed,
-    TResult Function(Success success, bool booleanOption)? successful,
+    TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)?
+        successful,
     required TResult orElse(),
   }) {
     if (failed != null) {
@@ -442,7 +459,7 @@ abstract class $CommonStateSuccessfulCopyWith<Failed, Success, $Res> {
           CommonStateSuccessful<Failed, Success> value,
           $Res Function(CommonStateSuccessful<Failed, Success>) then) =
       _$CommonStateSuccessfulCopyWithImpl<Failed, Success, $Res>;
-  $Res call({Success success, bool booleanOption});
+  $Res call({Success success, bool booleanOption, bool secondBooleanOption});
 }
 
 /// @nodoc
@@ -463,6 +480,7 @@ class _$CommonStateSuccessfulCopyWithImpl<Failed, Success, $Res>
   $Res call({
     Object? success = freezed,
     Object? booleanOption = freezed,
+    Object? secondBooleanOption = freezed,
   }) {
     return _then(CommonStateSuccessful<Failed, Success>(
       success == freezed
@@ -473,6 +491,10 @@ class _$CommonStateSuccessfulCopyWithImpl<Failed, Success, $Res>
           ? _value.booleanOption
           : booleanOption // ignore: cast_nullable_to_non_nullable
               as bool,
+      secondBooleanOption == freezed
+          ? _value.secondBooleanOption
+          : secondBooleanOption // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -481,16 +503,19 @@ class _$CommonStateSuccessfulCopyWithImpl<Failed, Success, $Res>
 
 class _$CommonStateSuccessful<Failed, Success>
     implements CommonStateSuccessful<Failed, Success> {
-  const _$CommonStateSuccessful(this.success, this.booleanOption);
+  const _$CommonStateSuccessful(
+      this.success, this.booleanOption, this.secondBooleanOption);
 
   @override
   final Success success;
   @override
   final bool booleanOption;
+  @override
+  final bool secondBooleanOption;
 
   @override
   String toString() {
-    return 'CommonState<$Failed, $Success>.successful(success: $success, booleanOption: $booleanOption)';
+    return 'CommonState<$Failed, $Success>.successful(success: $success, booleanOption: $booleanOption, secondBooleanOption: $secondBooleanOption)';
   }
 
   @override
@@ -502,14 +527,18 @@ class _$CommonStateSuccessful<Failed, Success>
                     .equals(other.success, success)) &&
             (identical(other.booleanOption, booleanOption) ||
                 const DeepCollectionEquality()
-                    .equals(other.booleanOption, booleanOption)));
+                    .equals(other.booleanOption, booleanOption)) &&
+            (identical(other.secondBooleanOption, secondBooleanOption) ||
+                const DeepCollectionEquality()
+                    .equals(other.secondBooleanOption, secondBooleanOption)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(success) ^
-      const DeepCollectionEquality().hash(booleanOption);
+      const DeepCollectionEquality().hash(booleanOption) ^
+      const DeepCollectionEquality().hash(secondBooleanOption);
 
   @JsonKey(ignore: true)
   @override
@@ -524,9 +553,11 @@ class _$CommonStateSuccessful<Failed, Success>
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(Failed fail) failed,
-    required TResult Function(Success success, bool booleanOption) successful,
+    required TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)
+        successful,
   }) {
-    return successful(success, booleanOption);
+    return successful(success, booleanOption, secondBooleanOption);
   }
 
   @override
@@ -535,11 +566,13 @@ class _$CommonStateSuccessful<Failed, Success>
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(Failed fail)? failed,
-    TResult Function(Success success, bool booleanOption)? successful,
+    TResult Function(
+            Success success, bool booleanOption, bool secondBooleanOption)?
+        successful,
     required TResult orElse(),
   }) {
     if (successful != null) {
-      return successful(success, booleanOption);
+      return successful(success, booleanOption, secondBooleanOption);
     }
     return orElse();
   }
@@ -576,11 +609,13 @@ class _$CommonStateSuccessful<Failed, Success>
 
 abstract class CommonStateSuccessful<Failed, Success>
     implements CommonState<Failed, Success> {
-  const factory CommonStateSuccessful(Success success, bool booleanOption) =
+  const factory CommonStateSuccessful(
+          Success success, bool booleanOption, bool secondBooleanOption) =
       _$CommonStateSuccessful<Failed, Success>;
 
   Success get success => throw _privateConstructorUsedError;
   bool get booleanOption => throw _privateConstructorUsedError;
+  bool get secondBooleanOption => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $CommonStateSuccessfulCopyWith<Failed, Success,
           CommonStateSuccessful<Failed, Success>>
