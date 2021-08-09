@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import '../../../../shared/theme/tomatl_typography.dart';
 import '../home_providers.dart';
 
@@ -27,7 +29,11 @@ class _TimerComponentState extends State<TimerComponent> {
             if (isInterval) {
               return Column(
                 children: [
-                  Text('INTERVAL'),
+                  Text(
+                    '${AppLocalizations.of(context)?.interval}'.toUpperCase(),
+                    style: tomatlTypography.subtitle1
+                        ?.copyWith(fontWeight: FontWeight.bold),
+                  ),
                   Text(
                     time,
                     style: tomatlTypography.headline1,
@@ -38,7 +44,11 @@ class _TimerComponentState extends State<TimerComponent> {
 
             return Column(
               children: [
-                Text('FOCUS'),
+                Text(
+                  '${AppLocalizations.of(context)?.focus}'.toUpperCase(),
+                  style: tomatlTypography.subtitle1
+                      ?.copyWith(fontWeight: FontWeight.bold),
+                ),
                 Text(
                   time,
                   style: tomatlTypography.headline1,

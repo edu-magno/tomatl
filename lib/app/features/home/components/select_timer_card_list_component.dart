@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:tomatl/app/core/flavors/flavor_config.dart';
+import '../../../core/flavors/flavor_config.dart';
 import '../home_providers.dart';
 import '../widgets/timer_card_widget/timer_card_widget.dart';
 

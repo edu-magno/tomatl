@@ -17,10 +17,9 @@ class App extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
-        supportedLocales: [
-          Locale('en', 'US'), // English, United States
-          Locale('pt', 'BR'), // Portuguese, Brasil
-        ],
+        supportedLocales:
+            AppLocalizations.supportedLocales // Portuguese, Brasil
+        ,
         theme: tomatlDefaultTheme,
         initialRoute: '/',
         routes: {},
