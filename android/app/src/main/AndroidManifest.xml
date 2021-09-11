@@ -2,7 +2,7 @@
     package="com.example.tomatl">
    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="tomatl"
+        android:label="Tomatl"
         android:icon="@mipmap/tomatl_icon">
         <activity
             android:name=".MainActivity"

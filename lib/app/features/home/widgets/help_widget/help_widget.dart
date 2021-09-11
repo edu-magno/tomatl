@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../../shared/theme/tomatl_colors.dart';
+import '../../../../../shared/theme/tomatl_typography.dart';
 import '../../../../../shared/widgets/vertical_spacing_10.dart';
 import 'help_text_widget.dart';
 import 'help_title_widget.dart';
@@ -49,11 +50,17 @@ class HelpWidget extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                        onPressed: () => Navigator.pop(context),
-                        style: TextButton.styleFrom(
-                          primary: TomatlColors.primary.shade900,
+                      onPressed: () => Navigator.pop(context),
+                      style: TextButton.styleFrom(
+                        primary: TomatlColors.primary.shade900,
+                      ),
+                      child: Text(
+                        '${AppLocalizations.of(context)?.ok}',
+                        style: tomatlTypography.subtitle1?.copyWith(
+                          fontWeight: FontWeight.bold,
                         ),
-                        child: Text('${AppLocalizations.of(context)?.ok}')),
+                      ),
+                    ),
                   ),
                 ],
               ),

@@ -6,6 +6,6 @@
     <color name="blueGrey">#37474F</color>
     <color name="NightBlue">#233446</color>
     <color name="grey">#212121</color>
-    <color name="dark">#000000</color>
+    <color name="dark_grey">#263238</color>
     <color name="light_grey">#EAEAEA</color>
 </resources>
