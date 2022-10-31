@@ -45,7 +45,7 @@ void main() {
     final widget = ProviderScope(child: makeTestableWidget(child: HomePage()));
 
     await tester.pumpWidget(widget);
-    final playButton = find.byType(PlayButtonWidget);
+    final playButton = find.byType(PlayAndPauseButtonWidget);
 
     expect(playButton, findsOneWidget);
 

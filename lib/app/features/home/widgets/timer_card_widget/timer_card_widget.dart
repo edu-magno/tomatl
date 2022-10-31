@@ -33,8 +33,8 @@ class FocusCardWidget extends StatelessWidget {
                 isSelected: isSelected,
               ),
               FocusCardInfoWidget(
-                interval: timer.interval,
-                focus: timer.focus,
+                interval: timer.intervalMinutes,
+                focus: timer.focusMinutes,
                 isSelected: isSelected,
               ),
             ],

@@ -13,18 +13,17 @@ void main() {
       (tester) async {
     await tester.pumpWidget(AppTest());
 
-    await tester.tap(find.byType(PlayButtonWidget));
+    await tester.tap(find.byType(PlayAndPauseButtonWidget));
     await tester.pump(Duration(minutes: 2, seconds: 10));
 
     await tester.tap(find.byType(PauseButtonWidget));
     expect(find.textContaining('INTERVAL'), findsOneWidget);
     expect(find.textContaining('0:50'), findsOneWidget);
     await tester.pump();
-    await tester.tap(find.byType(PlayButtonWidget));
+    await tester.tap(find.byType(PlayAndPauseButtonWidget));
     await tester.pump(Duration(seconds: 60));
     await tester.tap(find.byType(PauseButtonWidget));
     expect(find.textContaining('FOCUS'), findsOneWidget);
     expect(find.textContaining('1:50'), findsOneWidget);
-   
   });
 }

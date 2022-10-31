@@ -3,110 +3,89 @@ import 'dart:async';
 import 'package:just_audio/just_audio.dart';
 import 'package:state_notifier/state_notifier.dart';
 
-import '../../../../shared/utils/common_state/common_state.dart';
-import '../../../../shared/utils/constants/constants.dart';
 import '../../../../shared/utils/formaters.dart';
-import '../../../../shared/utils/sound_player.dart';
 import '../../../core/flavors/flavor_config.dart';
 import '../../../models/timer_type_model.dart';
-
-typedef TimerState = CommonState<String, String>;
+import 'timer_state.dart';
 
 class TimerStateNotifier extends StateNotifier<TimerState> {
   TimerStateNotifier() : super(TimerState.initial());
+  final player = AudioPlayer();
 
   /// timer that tick each second
   Timer? _timer;
 
-  /// total time of selected timer in minutes
-  int _rawTime = 0;
-
-  /// seconds of timer
-  int _seconds = 60;
-
-  /// bool that check if is a [intervaL] or [focus] time
-  bool _isInterval = false;
-
-  /// [_focusCount] that be increment after [focus] time over
-  ///
-  /// when count arrive in four they must be reseted
-  int _focusCount = 1;
-
   TomatlTimer selectedTimer = FlavorConfig.instance!.values.timerTemplates[0];
 
-  /// first tick of focus
-  void initialTimer() {
-    state =
-        TimerState.successful(timeFormat(selectedTimer.focus, 0), false, false);
-    _rawTime =
-        rawTimeFormat(FlavorConfig.instance!.values.timerTemplates[0].focus);
-  }
+  int seconds = 60;
+
+  bool isInterval = false;
+
+  int minutes = 0;
+
+  String formatedTime = '00:00';
+
+  void configTimer() {
+    minutes =
+        isInterval ? selectedTimer.intervalMinutes : selectedTimer.focusMinutes;
+
+    seconds = 60;
+    formatedTime = timeFormat(minutes, seconds);
+  } 
 
   void selectTimer(TomatlTimer timer) {
     pauseTimer();
-    state = TimerState.successful(timeFormat(timer.focus, 0), false, false);
-
-    _rawTime = rawTimeFormat(timer.focus);
-    _seconds = 60;
+    selectedTimer = timer;
+    configTimer();
+    state = TimerState.select();
   }
 
   void startTimer() {
-    final player = AudioPlayer();
-
+    state = isInterval ? TimerState.startInterval() : TimerState.startFocus();
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
-        _rawTime -= 1;
-
-        if (_rawTime == 0) {
-          final previousIsInterval =
-              (state as CommonStateSuccessful).booleanOption;
-
-          _isInterval = !previousIsInterval;
-
-          _focusCount = previousIsInterval ? _focusCount : _focusCount += 1;
-          // when [rawTime] arrive in 0 they must
-          // restart with [interval] or [focus]
-
-          // if [focusCount] is 4, the next [interval] must be 4 time longer
-          final intervalRawTime = _focusCount == 4
-              ? rawTimeFormat(selectedTimer.interval) * 4
-              : rawTimeFormat(selectedTimer.interval);
-
-          if (_focusCount == 4) {
-            _focusCount = 1;
-          }
-
-          // if [previousIsInterval] is true,
-          // raw time receive  focus time else  interval time
-          _rawTime = previousIsInterval
-              ? rawTimeFormat(selectedTimer.focus)
-              : intervalRawTime;
-
-          // if [previousIsInterval] is true,
-          // play endFocus sound, else play endInterval sound
-          previousIsInterval
-              ? playAlertSound(player, Constants.endFocusPath)
-              : playAlertSound(player, Constants.endinterval);
-        }
-
-        // when [seconds] arrive in 0 they must restart
-        if (_seconds == 0) {
-          state = TimerState.successful(
-              timeFormat(minutesFormat(_rawTime), 59), _isInterval, true);
-          _seconds = 59;
-          return;
-        }
-
-        state = TimerState.successful(
-            timeFormat(minutesFormat(_rawTime), _seconds -= 1), _isInterval, true);
+        updateMinutesAndSeconds();
       },
     );
   }
 
   void pauseTimer() {
     if (_timer != null) {
+      state = TimerState.paused();
       _timer?.cancel();
     }
+  }
+
+  void updateMinutesAndSeconds() {
+    if (seconds == 60) {
+      updateMinutes();
+    }
+    updateSeconds();
+    state = TimerState.tick();
+
+    if (seconds == 0) {
+      seconds = 60;
+      if (minutes == 0) {
+        finishTickState();
+      }
+    }
+
+    formatedTime = timeFormat(minutes, seconds);
+  }
+
+  void updateSeconds() {
+    seconds -= 1;
+  }
+
+  void updateMinutes() {
+    minutes -= 1;
+  }
+
+  void finishTickState() {
+    isInterval = !isInterval;
+    minutes =
+        isInterval ? selectedTimer.intervalMinutes : selectedTimer.focusMinutes;
+    state = TimerState.finishedTick();
   }
 }

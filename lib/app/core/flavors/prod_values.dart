@@ -1,3 +1,4 @@
+import '../../features/home/enums/tomatl_types.dart';
 import '../../models/timer_type_model.dart';
 import 'flavor_values.dart';
 
@@ -5,22 +6,22 @@ class ProdValues implements FlavorValues {
   @override
   List<TomatlTimer> get timerTemplates => [
         TomatlTimer(
-          id: 1,
-          focus: 25,
-          interval: 5,
+          focusMinutes: 25,
+          intervalMinutes: 5,
           title: 'Padrão',
+          type: TomatlType.medium,
         ),
         TomatlTimer(
-          id: 2,
-          focus: 15,
-          interval: 3,
+          focusMinutes: 15,
+          intervalMinutes: 3,
           title: 'Rápida',
+          type: TomatlType.short,
         ),
         TomatlTimer(
-          id: 3,
-          focus: 50,
-          interval: 10,
+          focusMinutes: 50,
+          intervalMinutes: 10,
           title: 'Longa',
+          type: TomatlType.long,
         ),
         // TODO add custom timer
       ];

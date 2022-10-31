@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 import '../../../../../shared/widgets/icon_button_widget.dart';
 
-class PlayButtonWidget extends StatelessWidget {
+class PlayAndPauseButtonWidget extends StatelessWidget {
+  final bool isPaused;
   final void Function()? onTap;
 
-  PlayButtonWidget({this.onTap});
+  PlayAndPauseButtonWidget({
+    this.onTap,
+    this.isPaused = true,
+  });
 
   @override
   Widget build(BuildContext context) {
     return IconButtonWidget(
-      icon: Icons.play_circle,
+      icon: isPaused ? Icons.play_circle : Icons.pause_circle,
       onTap: onTap,
     );
   }

@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/flavors/flavor_config.dart';
+import '../enums/tomatl_types.dart';
 import '../home_providers.dart';
 import '../widgets/timer_card_widget/timer_card_widget.dart';
 
-class SelectTimerCardListComponent extends StatefulWidget {
-  
+class SelectTimerCardListComponent extends ConsumerStatefulWidget {
   @override
   _SelectTimerCardListComponentState createState() =>
       _SelectTimerCardListComponentState();
 }
 
 class _SelectTimerCardListComponentState
-    extends State<SelectTimerCardListComponent> {
-  int selectedFocusCard = 1;
+    extends ConsumerState<SelectTimerCardListComponent> {
+  TomatlType selectedFocusCard = TomatlType.medium;
 
   @override
   Widget build(BuildContext context) {
@@ -27,11 +27,10 @@ class _SelectTimerCardListComponentState
             .map(
               (timer) => FocusCardWidget(
                 timer: timer,
-                isSelected: timer.id == selectedFocusCard,
+                isSelected: timer.type == selectedFocusCard,
                 onTap: () {
-                  setState(() => selectedFocusCard = timer.id);
-
-                  context
+                  setState(() => selectedFocusCard = timer.type);
+                  ref
                       .read(timerStateNotifierProvider.notifier)
                       .selectTimer(timer);
                 },

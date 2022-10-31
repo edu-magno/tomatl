@@ -6,59 +6,38 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../shared/theme/tomatl_typography.dart';
 import '../home_providers.dart';
 
-class TimerComponent extends StatefulWidget {
+class TimerComponent extends ConsumerStatefulWidget {
   @override
-  _TimerComponentState createState() => _TimerComponentState();
+  ConsumerState<TimerComponent> createState() => _TimerComponentState();
 }
 
-class _TimerComponentState extends State<TimerComponent> {
+class _TimerComponentState extends ConsumerState<TimerComponent> {
   @override
   void initState() {
     super.initState();
-    context.read(timerStateNotifierProvider.notifier).initialTimer();
+
+    ref.read(timerStateNotifierProvider.notifier).configTimer();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (context, watch, child) {
-        final state = watch(timerStateNotifierProvider);
-
-        return state.maybeWhen(
-          successful: (time, isInterval, isPlaying) {
-            if (isInterval) {
-              return Column(
-                children: [
-                  Text(
-                    '${AppLocalizations.of(context)?.interval}'.toUpperCase(),
-                    style: tomatlTypography.subtitle1
-                        ?.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    time,
-                    style: tomatlTypography.headline1,
-                  )
-                ],
-              );
-            }
-
-            return Column(
-              children: [
-                Text(
-                  '${AppLocalizations.of(context)?.focus}'.toUpperCase(),
-                  style: tomatlTypography.subtitle1
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  time,
-                  style: tomatlTypography.headline1,
-                )
-              ],
-            );
-          },
-          orElse: () => Container(),
-        );
-      },
+    final notifier = ref.watch(timerStateNotifierProvider.notifier);
+    final state = ref.watch(timerStateNotifierProvider);
+    final title = notifier.isInterval
+        ? AppLocalizations.of(context)?.interval
+        : AppLocalizations.of(context)?.focus;
+    return Column(
+      children: [
+        Text(
+          title!,
+          style:
+              tomatlTypography.subtitle1?.copyWith(fontWeight: FontWeight.bold),
+        ),
+        Text(
+          notifier.formatedTime,
+          style: tomatlTypography.headline1,
+        ),
+      ],
     );
   }
 }

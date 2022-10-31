@@ -2,6 +2,7 @@
     package="com.example.tomatl">
    <uses-permission android:name="android.permission.INTERNET" />
    <application
+      android:name="androidx.multidex.MultiDexApplication" 
         android:label="Tomatl"
         android:icon="@mipmap/tomatl_icon">
         <activity

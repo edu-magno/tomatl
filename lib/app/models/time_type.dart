@@ -22,8 +22,8 @@ class Time {
     return Time(
       isInterval: isInterval,
       seconds: seconds,
-      focus: timer.focus,
-      interval: timer.interval,
+      focus: timer.focusMinutes,
+      interval: timer.intervalMinutes,
     );
   }
 }
